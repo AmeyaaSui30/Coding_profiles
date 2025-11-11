@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ameya's Coding Stuffs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f8fafc;
+            background-image: 
+                radial-gradient(at 20% 30%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+                radial-gradient(at 80% 70%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.06) 0px, transparent 50%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .category {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 35px;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .category:hover::before {
+            opacity: 1;
+        }
+
+        .category:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+            background: #ffffff;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-right: 18px;
+        }
+
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 22px;
+            background: #f1f5f9;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            position: relative;
+        }
+
+        .link-item::after {
+            content: '→';
+            position: absolute;
+            right: 22px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: #a78bfa;
+        }
+
+        .link-item:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateX(6px);
+            padding-right: 50px;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+        }
+
+        .link-item:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+        .link-icon img,
+        .link-icon svg {
+            width: 28px;
+            height: 28px;
+            display: block;
+        }
+
+        .link-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #6b7280;
+            font-size: 1rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .heart {
+            color: #a78bfa;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .category {
+                padding: 28px;
+            }
+
+            .category-title {
+                font-size: 1.3rem;
+            }
+
+            .link-item {
+                padding: 16px 18px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #a78bfa, #60a5fa);
+            border-radius: 10px;
+            border: 3px solid #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #8b5cf6, #3b82f6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ameya's Coding Stuffs</h1>
+            <p class="subtitle">Everything I Practice</p>
+        </header>
+
+        <div class="categories">
+            <!-- DSA Category -->
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🧠</span>
+                    <h2 class="category-title">DSA Practice</h2>
+                </div>
+                <div class="links">
+                    <a href="https://leetcode.com/u/Ameyasrvi36/" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/leetcode.svg" alt="LeetCode logo" loading="lazy"></span>
+                        <span class="link-name">LeetCode</span>
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/ameya_surve36" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hackerrank.svg" alt="HackerRank logo" loading="lazy"></span>
+                        <span class="link-name">HackerRank</span>
+                    </a>
+                    <a href="https://codeforces.com" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/codeforces.svg" alt="Codeforces logo" loading="lazy"></span>
+                        <span class="link-name">Codeforces</span>
+                    </a>
+                    <a href="https://www.codechef.com/users/aloft_frog_369" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/codechef.svg" alt="CodeChef logo" loading="lazy"></span>
+                        <span class="link-name">CodeChef</span>
+                    </a>
+                    <a href="https://www.geeksforgeeks.org/user/ameyasusvei36" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/geeksforgeeks.svg" alt="GeeksforGeeks logo" loading="lazy"></span>
+                        <span class="link-name">GeeksforGeeks</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Database Category -->
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🗄️</span>
+                    <h2 class="category-title">Database & SQL</h2>
+                </div>
+                <div class="links">
+                    <a href="https://www.geeksforgeeks.org/user/ameyasusvei36" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/geeksforgeeks.svg" alt="GeeksforGeeks logo" loading="lazy"></span>
+                        <span class="link-name">GeeksforGeeks</span>
+                    </a>
+                    <a href="https://www.datacamp.com" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/datacamp.svg" alt="DataCamp logo" loading="lazy"></span>
+                        <span class="link-name">DataCamp</span>
+                    </a>
+                    <a href="https://leetcode.com/u/AmeyaSiuu310/" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/leetcode.svg" alt="LeetCode logo" loading="lazy"></span>
+                        <span class="link-name">LeetCode</span>
+                    </a>
+                    <a href="https://www.hackerrank.com/domains/sql" class="link-item" target="_blank">
+                        <span class="link-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hackerrank.svg" alt="HackerRank logo" loading="lazy"></span>
+                        <span class="link-name">HackerRank</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with <span class="heart">💜</span> by Ameya.</p>
+        </footer>
+    </div>
+</body>
+</html>
