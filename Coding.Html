@@ -176,6 +176,95 @@
             font-size: 1.1rem;
         }
 
+        .portfolio-section {
+            margin: 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .portfolio-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 45px;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+        }
+
+        .portfolio-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-icon {
+            font-size: 2.5rem;
+            margin-right: 12px;
+        }
+
+        .portfolio-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .portfolio-description {
+            color: #64748b;
+            font-size: 1rem;
+            margin: 20px 0 30px 0;
+            line-height: 1.6;
+        }
+
+        .portfolio-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .portfolio-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .portfolio-btn:active {
+            transform: translateY(-1px);
+        }
+
         footer {
             text-align: center;
             margin-top: 60px;
@@ -215,6 +304,18 @@
 
             .link-item {
                 padding: 16px 18px;
+            }
+
+            .portfolio-card {
+                padding: 35px 25px;
+            }
+
+            .portfolio-title {
+                font-size: 1.5rem;
+            }
+
+            .portfolio-description {
+                font-size: 0.95rem;
             }
         }
 
@@ -299,6 +400,18 @@
                         <span class="link-name">HackerRank</span>
                     </a>
                 </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Section -->
+        <div class="portfolio-section">
+            <div class="portfolio-card">
+                <div class="portfolio-header">
+                    <span class="portfolio-icon">🌐</span>
+                    <h2 class="portfolio-title">My Portfolio</h2>
+                </div>
+                <p class="portfolio-description">Check out my complete portfolio website to see my projects, achievements, and experience.</p>
+                <a href="https://ameyasurvexyz.vercel.app/" class="portfolio-btn" target="_blank">Visit Portfolio</a>
             </div>
         </div>
 
